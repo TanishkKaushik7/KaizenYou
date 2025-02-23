@@ -2,6 +2,7 @@ import React from "react";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import img1 from "../assets/herosection.png";
 import img2 from "../assets/workshop.png";
+import FAQ from "./faq";
 import "../cssfiles/landing.css";
 
 const LandingPage = () => {
@@ -56,7 +57,54 @@ const LandingPage = () => {
       <section className="head-container">
         <h1 className="choose">Why Choose Us?</h1>
       </section>
-
+      {/* Flip Boxes Section */}
+      <section className="flip-boxes-section">
+        <div className="flip-box">
+          <div className="flip-box-inner">
+        <div className="flip-box-front">
+          <h3>Interactive Learning Tools</h3>
+        </div>
+        <div className="flip-box-back">
+          <p>Engage students with interactive, lessons, quizess and games  that makes learning fun and effective</p>
+          
+        </div>
+          </div>
+        </div>
+        <div className="flip-box">
+          <div className="flip-box-inner">
+        <div className="flip-box-front">
+          <h3>Personalised Learning Path</h3>
+        </div>
+        <div className="flip-box-back">
+          <p>Tailor educationalexperiences to meet the unique needs of each student, ensuring no one gets left behind.</p>
+        </div>
+          </div>
+        </div>
+        <div className="flip-box">
+          <div className="flip-box-inner">
+        <div className="flip-box-front">
+          <h3>Teacher's Resources</h3>
+        </div>
+        <div className="flip-box-back">
+          <p>Equip educator with the tools they need to create dynamic and impactful lessons.</p>
+        </div>
+          </div>
+        </div>
+        <div className="flip-box">
+          <div className="flip-box-inner">
+        <div className="flip-box-front">
+          <h3>Analytics and Reporting</h3>
+        </div>
+        <div className="flip-box-back">
+          <p>Gain insight into student performance and progress with ourcomprehensive analytics platform.</p>
+        </div>
+          </div>
+        </div>
+      </section>
+      {/* FAQ Section */}
+      <section className="faq-section">
+        <FAQ />
+      </section>
       {/* Footer */}
       <footer className="footer">
         <div className="social-icons">
