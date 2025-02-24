@@ -1,0 +1,181 @@
+/* Features Section */
+.features-section {
+    background-color: #000000;
+    padding: 60px 20px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Section becomes visible on scroll */
+.features-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Features Title */
+.features-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+/* Title Underline Animation */
+.features-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #6c5ce7;
+    margin: 10px auto;
+    border-radius: 5px;
+    animation: titleBar 1s ease-in-out infinite alternate;
+}
+
+@keyframes titleBar {
+    0% { width: 80px; }
+    100% { width: 120px; }
+}
+
+/* Features Grid */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Feature Card */
+.feature-card {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border 0.4s ease-in-out, color 0.4s ease-in-out;
+    opacity: 1;
+    transform: translateY(0);
+    border: 2px solid transparent;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+    margin-bottom: 15px;
+    position: relative;
+    display: inline-block;
+}
+
+/* 🆕 Continuous Jumping Effect (Icons & Text) */
+.feature-icon,
+.feature-title,
+.feature-description {
+    display: inline-block;
+    animation: continuousJump 2.5s ease-in-out infinite;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* Continuous Jumping */
+@keyframes continuousJump {
+    0% { transform: translateY(0); }
+    40% { transform: translateY(-10px); } /* Move up */
+    70% { transform: translateY(0); } /* Return to normal */
+    100% { transform: translateY(0); }
+}
+
+/* 🆕 Ripple Effect for Icons & Text */
+.icon-wrapper::after,
+.feature-title::after,
+.feature-description::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 40px;
+    height: 10px;
+    background: rgba(45, 137, 239, 0.3);
+    border-radius: 50%;
+    transform: translateX(-50%) scale(0);
+    animation: rippleEffect 2.5s ease-in-out infinite;
+}
+
+/* Ripple Animation */
+@keyframes rippleEffect {
+    0% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0.8;
+    }
+    40% {
+        transform: translateX(-50%) scale(1.2);
+        opacity: 0.6;
+    }
+    70% {
+        transform: translateX(-50%) scale(1.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(-50%) scale(0);
+        opacity: 0;
+    }
+}
+
+/* 🆕 Hover Effect: Instant Jump & Color Change */
+.feature-card:hover .feature-icon,
+.feature-card:hover .feature-title,
+.feature-card:hover .feature-description {
+    transform: translateY(-20px);
+    color: #2d89ef;
+    animation: instantJump 0.3s ease-in-out, continuousJump 2.5s ease-in-out infinite;
+}
+
+/* Instant Jump on Hover */
+@keyframes instantJump {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(-20px); }
+}
+
+/* Feature Icon */
+.feature-icon {
+    font-size: 2.7rem; /* Keep size fixed */
+    color: #6c5ce7;
+}
+
+/* Feature Title */
+.feature-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #444;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Feature Description */
+.feature-description {
+    font-size: 1rem;
+    color: #666;
+    position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features-title {
+        font-size: 1.8rem;
+    }
+
+    .feature-title {
+        font-size: 1.2rem;
+    }
+
+    .feature-description {
+        font-size: 1rem;
+    }
+}

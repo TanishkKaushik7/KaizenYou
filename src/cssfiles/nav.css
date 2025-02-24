@@ -40,10 +40,15 @@ nav {
   text-decoration: none;
 }
 
+/* Menu */
 .menu {
   display: flex;
   list-style: none;
   gap: 20px;
+}
+
+.menu li {
+  list-style: none;
 }
 
 .menu li a {
@@ -55,7 +60,7 @@ nav {
 }
 
 .menu li a:hover {
-  color: rgb(59 130 246);
+  color: rgb(59, 130, 246);
 }
 
 /* Login Button */
@@ -67,34 +72,32 @@ nav {
   text-align: center;
   background-color: #020617;
   color: #ffffff;
+  top: -0.15rem;
   font-size: 14px;
-  top: -0.2rem;
   font-weight: 500;
-  line-height: 20px;
   padding: 10px 30px;
-  border-radius: 9999px;
+  border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
   overflow: hidden;
   border: none;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+  min-width: 120px;
 }
 
-/* Animated border effect */
+/* Running border effect */
 .login-btn::before {
   content: "";
-  background-image: conic-gradient(
-    #8b5cf6 20deg, /* Violet color */
-    transparent 120deg
-  );
-  height: 200%;
-  width: 200%;
+  background-image: conic-gradient(#8b5cf6 20deg, transparent 120deg);
+  height: 250%;
+  width: 250%;
   position: absolute;
-  left: -50%;
-  top: -50%;
-  animation: rotate 2s infinite linear;
+  left: -75%;
+  top: -75%;
+  animation: rotate 3s infinite linear;
 }
 
-/* Inner overlay to keep text readable */
+/* Inner overlay */
 .login-btn::after {
   content: "LOGIN";
   position: absolute;
@@ -102,8 +105,6 @@ nav {
   width: 94%;
   background-color: #020617;
   border-radius: 9999px;
-  top: 3%;
-  left: 3%;
   color: #f7f7f7;
   display: flex;
   align-items: center;
@@ -111,33 +112,46 @@ nav {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 2px;
+  transition: background-color 0.3s ease, transform 0.3s ease-in-out;
 }
 
-/* Keyframes for rotation */
+/* Keyframes */
 @keyframes rotate {
   100% {
     transform: rotate(-360deg);
   }
 }
 
-/* Hover effect */
+/* Hover Effects */
 .login-btn:hover::after {
   background-color: #1e1b29;
   color: #ffffff;
+  transform: scale(1.1);
 }
-/* Responsive Hamburger Menu */
+
+.login-btn:hover::before {
+  background-image: conic-gradient(rgb(59, 130, 246) 20deg, transparent 120deg);
+}
+
+.login-btn:hover {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 25px rgba(59, 130, 246, 0.6);
+}
+
+/* Hamburger Menu */
 .hamburger {
   display: none;
-  cursor: pointer;
   flex-direction: column;
+  cursor: pointer;
+  background: none;
+  border: none;
   gap: 5px;
 }
 
-.hamburger .line {
+.line {
   width: 25px;
   height: 3px;
-  background-color: #fff;
-  transition: all 0.3s ease;
+  background: white;
+  transition: transform 0.3s ease-in-out;
 }
 
 .menu-toggle .line:nth-child(1) {
@@ -154,6 +168,10 @@ nav {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
   .menu {
     display: none;
     flex-direction: column;
@@ -161,10 +179,9 @@ nav {
     top: 75px;
     left: 0;
     width: 100%;
-    background: rgb(59 130 246);
-    text-align: center;
+    background: black;
+    padding: 20px 0;
     align-items: center;
-    padding: 10px 0;
   }
 
   .menu.active {
@@ -173,21 +190,5 @@ nav {
 
   .menu li {
     margin: 10px 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-
-  .login-btn {
-    font-size: 13px;
-    padding: 6px 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .login-btn {
-    font-size: 12px;
-    padding: 5px 15px;
   }
 }

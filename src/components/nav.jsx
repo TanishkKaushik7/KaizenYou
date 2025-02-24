@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../cssfiles/nav.css";
 
-const RadioInputs = () => {
+const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -17,39 +17,35 @@ const RadioInputs = () => {
           </div>
 
           <button
-            className="hamburger"
+            className={`hamburger ${menuOpen ? "menu-toggle" : ""}`}
             onClick={toggleMenu}
             aria-label="Toggle menu"
           >
-            <span className={`line ${menuOpen ? "open" : ""}`}></span>
-            <span className={`line ${menuOpen ? "open" : ""}`}></span>
-            <span className={`line ${menuOpen ? "open" : ""}`}></span>
+            <span className="line"></span>
+            <span className="line"></span>
+            <span className="line"></span>
           </button>
 
           <ul className={`menu ${menuOpen ? "active" : ""}`}>
             {["Home", "About Us", "Events"].map((item) => (
               <li key={item}>
-                <a href={item === "About Us" ? "/about" : `#${item.replace(/\s+/g, "")}`}
-                onClick={() => setMenuOpen(false)}>
+                <a
+                  href={item === "About Us" ? "/about" : `#${item.replace(/\s+/g, "")}`}
+                  onClick={() => setMenuOpen(false)}
+                >
                   {item}
                 </a>
               </li>
             ))}
 
             <li>
-            <button className="login-btn">Login</button>
+              <button className="login-btn">Login</button>
             </li>
           </ul>
         </div>
       </nav>
-
-      <div className="button">
-        <a href="#Home" aria-label="Scroll to top">
-          <i className="fas fa-arrow-up"></i>
-        </a>
-      </div>
     </>
   );
 };
 
-export default RadioInputs;
+export default Navbar;

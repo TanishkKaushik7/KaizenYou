@@ -198,7 +198,7 @@ body {
 }
 
 .workshop-section .im {
-  width: 40%;
+  width: 80%;
   max-width: 350px;
   border-radius: 10px;
 }
@@ -264,110 +264,14 @@ body {
 .footer p {
   font-size: 14px;
 }
-/* Flip Boxes Section */
-.flip-boxes-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 40px;
-  perspective: 1000px; /* Adds 3D depth */
-}
 
-.flip-box {
-  width: 300px;  /* Increased width */
-  height: 250px; /* Reduced height */
-  background: linear-gradient(to bottom, #ffffff, #f3f3f3);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
-  transform-style: preserve-3d;
-}
-
-.flip-box-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  transform-style: preserve-3d;
-}
-
-.flip-box-front,
-.flip-box-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-  border-radius: 12px;
-  transition: opacity 0.4s ease-in-out;
-}
-
-/* Front side styling */
-.flip-box-front {
-  background: #2d89ef;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Back side styling */
-.flip-box-back {
-  background: #ffffff;
-  color: #333;
-  font-size: 16px;
-  transform: rotateX(10deg);
+.fade-in {
   opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
-/* 3D Hover Effect */
-.flip-box:hover {
-  transform: rotateX(15deg) scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-/* Show back side on hover */
-.flip-box:hover .flip-box-front {
-  opacity: 0;
-}
-
-.flip-box:hover .flip-box-back {
+.fade-in.visible {
   opacity: 1;
-  transform: rotateX(0deg);
-}
-
-/* RESPONSIVENESS */
-@media (max-width: 768px) {  /* Tablet */
-  .flip-box {
-    width: 300px;  /* Adjust width */
-    height: 220px; /* Adjust height */
-  }
-
-  .flip-box-front {
-    font-size: 18px;
-  }
-
-  .flip-box-back {
-    font-size: 15px;
-  }
-}
-
-@media (max-width: 480px) {  /* Mobile */
-  .flip-box {
-    width: 100%;  /* Full width */
-    height: 200px; /* Smaller height */
-  }
-
-  .flip-box-front {
-    font-size: 16px;
-  }
-
-  .flip-box-back {
-    font-size: 14px;
-  }
+  transform: translateY(0);
 }
