@@ -1,19 +1,32 @@
-/* Features Section */
-.features-section {
-    background-color: #000000;
-    padding: 60px 20px;
-    text-align: center;
+/* 🌟 General Styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ✅ Smooth Fade-In Effect on Scroll */
+.section {
     opacity: 0;
     transform: translateY(50px);
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-/* Section becomes visible on scroll */
-.features-section.visible {
+/* Section Becomes Visible */
+.section.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* 🌟 Features Section */
+.features-section {
+    background-color: #000;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+/* Features Container */
 .features-container {
     max-width: 1200px;
     margin: auto;
@@ -45,107 +58,37 @@
     100% { width: 120px; }
 }
 
-/* Features Grid */
+/* ✅ Features Grid */
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
 
-/* Feature Card */
+/* ✅ Feature Card */
 .feature-card {
     background: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out, border 0.4s ease-in-out, color 0.4s ease-in-out;
-    opacity: 1;
-    transform: translateY(0);
-    border: 2px solid transparent;
+    transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
     text-align: center;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Icon Wrapper */
+/* ✅ Icon Wrapper */
 .icon-wrapper {
+    order: -1; /* Moves icon above text */
     margin-bottom: 15px;
-    position: relative;
-    display: inline-block;
-}
-
-/* 🆕 Continuous Jumping Effect (Icons & Text) */
-.feature-icon,
-.feature-title,
-.feature-description {
-    display: inline-block;
-    animation: continuousJump 2.5s ease-in-out infinite;
-    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* Continuous Jumping */
-@keyframes continuousJump {
-    0% { transform: translateY(0); }
-    40% { transform: translateY(-10px); } /* Move up */
-    70% { transform: translateY(0); } /* Return to normal */
-    100% { transform: translateY(0); }
-}
-
-/* 🆕 Ripple Effect for Icons & Text */
-.icon-wrapper::after,
-.feature-title::after,
-.feature-description::after {
-    content: "";
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    width: 40px;
-    height: 10px;
-    background: rgba(45, 137, 239, 0.3);
-    border-radius: 50%;
-    transform: translateX(-50%) scale(0);
-    animation: rippleEffect 2.5s ease-in-out infinite;
-}
-
-/* Ripple Animation */
-@keyframes rippleEffect {
-    0% {
-        transform: translateX(-50%) scale(0);
-        opacity: 0.8;
-    }
-    40% {
-        transform: translateX(-50%) scale(1.2);
-        opacity: 0.6;
-    }
-    70% {
-        transform: translateX(-50%) scale(1.5);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(-50%) scale(0);
-        opacity: 0;
-    }
-}
-
-/* 🆕 Hover Effect: Instant Jump & Color Change */
-.feature-card:hover .feature-icon,
-.feature-card:hover .feature-title,
-.feature-card:hover .feature-description {
-    transform: translateY(-20px);
-    color: #2d89ef;
-    animation: instantJump 0.3s ease-in-out, continuousJump 2.5s ease-in-out infinite;
-}
-
-/* Instant Jump on Hover */
-@keyframes instantJump {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-    100% { transform: translateY(-20px); }
 }
 
 /* Feature Icon */
 .feature-icon {
-    font-size: 2.7rem; /* Keep size fixed */
+    font-size: 2.7rem;
     color: #6c5ce7;
 }
 
@@ -155,18 +98,22 @@
     font-weight: 700;
     color: #444;
     margin-bottom: 10px;
-    position: relative;
 }
 
 /* Feature Description */
 .feature-description {
     font-size: 1rem;
     color: #666;
-    position: relative;
 }
 
-/* Responsive Design */
+/* ✅ Responsive Adjustments */
 @media (max-width: 768px) {
+    /* Features Grid: Stack cards in one column */
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Adjust Text Sizes */
     .features-title {
         font-size: 1.8rem;
     }
@@ -178,4 +125,34 @@
     .feature-description {
         font-size: 1rem;
     }
+
+    /* ✅ Make Image 2 Smaller & Text Align Right */
+    .workshop-section {
+        display: flex;
+        flex-direction: column; /* Stack on mobile */
+        align-items: center;
+        text-align: center;
+    }
+
+    .workshop-image {
+        width: 80%; /* Reduce size */
+        margin-bottom: 20px;
+    }
+
+    .txt {
+        text-align: center;
+        font-size: 0.9rem;
+    }
+}
+
+/* ✅ Parallax Effect */
+.parallax {
+    background: url('your-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
 }
