@@ -58,62 +58,73 @@ nav {
   color: rgb(59 130 246);
 }
 
-/* Button Styles */
-.Btn {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  width: 30px;
-  height: 30px;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: width 0.3s ease, border-radius 0.3s ease;
-  background-color: rgb(59 130 246);
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+/* Login Button */
+.login-btn {
   position: relative;
-  overflow: hidden;
-}
-
-.Btn .sign {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
+  text-align: center;
+  background-color: #020617;
+  color: #ffffff;
+  font-size: 14px;
+  top: -0.2rem;
+  font-weight: 500;
+  line-height: 20px;
+  padding: 10px 30px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  border: none;
 }
 
-.Btn .sign svg {
-  width: 17px;
-  fill: white;
-}
-
-.Btn .text {
+/* Animated border effect */
+.login-btn::before {
+  content: "";
+  background-image: conic-gradient(
+    #8b5cf6 20deg, /* Violet color */
+    transparent 120deg
+  );
+  height: 200%;
+  width: 200%;
   position: absolute;
-  right: 0;
-  width: 0;
-  opacity: 0;
-  color: white;
-  font-size: 1.2em;
+  left: -50%;
+  top: -50%;
+  animation: rotate 2s infinite linear;
+}
+
+/* Inner overlay to keep text readable */
+.login-btn::after {
+  content: "LOGIN";
+  position: absolute;
+  height: 94%;
+  width: 94%;
+  background-color: #020617;
+  border-radius: 9999px;
+  top: 3%;
+  left: 3%;
+  color: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
   font-weight: 600;
-  white-space: nowrap;
-  transition: all 0.3s ease;
+  letter-spacing: 2px;
 }
 
-.Btn:hover {
-  width: 65px;
-  border-radius: 40px;
+/* Keyframes for rotation */
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
-.Btn:hover .text {
-  opacity: 1;
-  width: auto;
-  padding-left: 10px;
+/* Hover effect */
+.login-btn:hover::after {
+  background-color: #1e1b29;
+  color: #ffffff;
 }
-
-.Btn:active {
-  transform: translate(2px, 2px);
-}
-
 /* Responsive Hamburger Menu */
 .hamburger {
   display: none;
@@ -141,6 +152,7 @@ nav {
   transform: translateY(-8px) rotate(-45deg);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .menu {
     display: none;
@@ -166,35 +178,16 @@ nav {
   .hamburger {
     display: flex;
   }
-}
 
-/* Responsive Button */
-@media (max-width: 768px) {
-  .Btn {
-    width: 25px;
-    height: 25px;
-  }
-
-  .Btn:hover {
-    width: 100px;
-  }
-
-  .Btn .text {
-    font-size: 0.9em;
+  .login-btn {
+    font-size: 13px;
+    padding: 6px 18px;
   }
 }
 
 @media (max-width: 480px) {
-  .Btn {
-    width: 20px;
-    height: 20px;
-  }
-
-  .Btn:hover {
-    width: 80px;
-  }
-
-  .Btn .text {
-    font-size: 0.8em;
+  .login-btn {
+    font-size: 12px;
+    padding: 5px 15px;
   }
 }
