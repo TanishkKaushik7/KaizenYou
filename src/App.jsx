@@ -1,14 +1,19 @@
-import RadioInputs from '../src/components/nav.jsx'
-import LandingPage from '../src/components/landing.jsx'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "../src/components/nav";
+import Login from "../src/components/login";
+import LandingPage from "../src/components/landing"; 
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <RadioInputs />
-      <LandingPage />
-    </div>
+    <Router basename="/KaizenYou">
+    <Navbar />
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/login" element={<Login />} />
+    </Routes>
+  </Router>
   );
-}
+};
 
-export default App
+export default App;

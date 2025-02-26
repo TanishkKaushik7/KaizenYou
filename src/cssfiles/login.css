@@ -1,0 +1,134 @@
+/* 🌟 Enhanced Login Page Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Centering the Login Box */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+}
+
+/* Card Wrapper */
+.auth-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 360px;
+}
+
+/* Title */
+h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Input Groups */
+.auth-input-group {
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* Labels */
+label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Inputs & Dropdown */
+select,
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+/* Input Focus Effect */
+input:focus,
+select:focus {
+    border-color: #6c5ce7;
+    box-shadow: 0 0 8px rgba(108, 92, 231, 0.5);
+}
+
+/* Remember Me Checkbox */
+.auth-remember {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: flex-start;
+    margin-top: 12px;
+    font-size: 14px;
+    gap: 8px; /* Adds space between checkbox and label */
+}
+
+.auth-remember input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #6c5ce7; /* Purple checkbox color */
+}
+
+.auth-remember label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+/* 🚀 Login Button - Styled like Navbar Button */
+.auth-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #6c5ce7, #a29bfe);
+    color: white;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.auth-btn:hover {
+    background: linear-gradient(90deg, #5a4fcf, #9186ff);
+    transform: scale(1.05);
+}
+
+/* Links */
+.auth-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #6c5ce7;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+    color: #5a4fcf;
+}
