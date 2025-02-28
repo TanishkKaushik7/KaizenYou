@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import img1 from "../assets/herosection.png";
 import img2 from "../assets/workshop.png";
@@ -11,7 +12,6 @@ const LandingPage = () => {
   const sectionsRef = useRef([]);
 
   useEffect(() => {
-    // Mouse Parallax Effect
     const handleMouseMove = (e) => {
       const { innerWidth, innerHeight } = window;
       const x = (e.clientX - innerWidth / 2) / 40;
@@ -20,14 +20,10 @@ const LandingPage = () => {
     };
 
     window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
   useEffect(() => {
-    // Fade-In Effect on Scroll
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -57,7 +53,11 @@ const LandingPage = () => {
           <h2>Get the Competitive Edge!!</h2>
           <p>Learn In-Demand Management Skills with KaizenYou</p>
           <div className="button-container">
-            <button className="bn-1">Get Started</button>
+            <button className="bn-1">
+              <Link to="/signup" style={{ textDecoration: "none", color: "inherit" }}>
+                Get Started
+              </Link>
+            </button>
           </div>
         </div>
         <div
@@ -78,13 +78,9 @@ const LandingPage = () => {
       {/* About Section */}
       <section className="info-section fade-in" ref={(el) => (sectionsRef.current[2] = el)}>
         <h2>
-          KaizenYou is an online training and learning platform created
-          specifically for school students from the field of Commerce.
+          KaizenYou is an online training and learning platform created specifically for school students from the field of Commerce.
         </h2>
-        <p>
-          Through training sessions and workshops, we assist individuals in
-          learning several departments inside an organization.
-        </p>
+        <p>Through training sessions and workshops, we assist individuals in learning several departments inside an organization.</p>
       </section>
 
       {/* Workshop Section with Parallax Effect */}
@@ -101,9 +97,7 @@ const LandingPage = () => {
         <div className="txt">
           <p>We go beyond traditional learning by offering dynamic training sessions and workshops.</p>
           <p className="tx">
-            Our platform also provides exclusive mentoring sessions with seasoned professionals,
-            each boasting over five years of industry experience, to guide and inspire students
-            towards their career goals.
+            Our platform also provides exclusive mentoring sessions with seasoned professionals, each boasting over five years of industry experience, to guide and inspire students towards their career goals.
           </p>
         </div>
       </section>
@@ -122,15 +116,9 @@ const LandingPage = () => {
       {/* Footer */}
       <footer className="footer fade-in" ref={(el) => (sectionsRef.current[6] = el)}>
         <div className="social-icons">
-          <a href="https://www.linkedin.com/company/kaizenyou/" target="_blank" rel="noopener noreferrer">
-            <FaLinkedin />
-          </a>
-          <a href="https://x.com/kaizenyou" target="_blank" rel="noopener noreferrer">
-            <FaTwitter />
-          </a>
-          <a href="https://www.instagram.com/kaizenyou_/" target="_blank" rel="noopener noreferrer">
-            <FaInstagram />
-          </a>
+          <a href="#"><FaLinkedin /></a>
+          <a href="#"><FaTwitter /></a>
+          <a href="#"><FaInstagram /></a>
         </div>
         <p>&copy; 2024 KAIZENYOU, ALL RIGHTS RESERVED.</p>
       </footer>

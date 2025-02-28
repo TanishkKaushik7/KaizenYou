@@ -1,0 +1,154 @@
+/* 🌟 Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Centering the Sign-Up Page */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #00b894, #55efc4);
+    padding: 20px;
+    position: relative;
+    top: 3rem;
+}
+
+.signup-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 380px;
+}
+
+/* Title */
+.signup-card h2 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Form Styling */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Input Groups */
+.signup-input-field {
+    margin-top: 15px;
+    text-align: left;
+}
+
+/* Labels */
+.signup-input-field label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+/* Inputs & Dropdown */
+.signup-input-field input,
+.signup-input-field select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+/* Input Focus Effect */
+.signup-input-field input:focus,
+.signup-input-field select:focus {
+    border-color: #00b894;
+    box-shadow: 0 0 8px rgba(0, 184, 148, 0.5);
+}
+
+/* Agree Terms Checkbox */
+.signup-agree {
+    display: flex;
+    align-items: center; 
+    justify-content: flex-start;
+    margin-top: 12px;
+    font-size: 14px;
+    gap: 8px;
+}
+
+.signup-agree input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #00b894;
+}
+
+.signup-agree label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+}
+
+/* 🚀 Sign-Up Button */
+.signup-btn {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00b894, #55efc4);
+    color: white;
+    transition: 0.3s;
+}
+
+/* Hover Effect */
+.signup-btn:hover {
+    background: linear-gradient(90deg, #00997c, #48e0b4);
+    transform: scale(1.05);
+}
+
+/* Links */
+.signup-links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.signup-links p {
+    color: #333;
+}
+
+.signup-links a {
+    text-decoration: none;
+    color: #00b894;
+    transition: 0.3s ease;
+}
+
+.signup-links a:hover {
+    text-decoration: underline;
+    color: #00997c;
+}
+
+@media (max-width: 420px) {
+    .signup-card {
+        width: 90%;
+        padding: 20px;
+    }
+}

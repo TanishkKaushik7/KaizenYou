@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "../cssfiles/login.css";
 
 const UserLogin = () => {
@@ -73,7 +74,7 @@ const UserLogin = () => {
           <div className="auth-links">
             <a href="#">Forgot Password?</a>
             <span>|</span>
-            <a href="#">Sign Up</a>
+            <Link to="/signup">Sign Up</Link>
           </div>
         </form>
       </div>
