@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../cssfiles/login.css";
 
 const UserLogin = () => {
@@ -7,10 +7,31 @@ const UserLogin = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [rememberUser, setRememberUser] = useState(false);
+  
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleLogin = (e) => {
     e.preventDefault();
+
     console.log("Logging in as:", userRole, userEmail, userPassword, rememberUser);
+
+    // Redirect users to their respective dashboards
+    switch (userRole) {
+      case "student":
+        navigate("/dashboard/student");
+        break;
+      case "teacher":
+        navigate("/dashboard/teacher");
+        break;
+      case "admin":
+        navigate("/dashboard/admin");
+        break;
+      case "school":
+        navigate("/dashboard/school");
+        break;
+      default:
+        navigate("/");
+    }
   };
 
   return (
@@ -19,7 +40,6 @@ const UserLogin = () => {
         <h2>User Login</h2>
 
         <form className="auth-form" onSubmit={handleLogin}>
-          {/* Role Selection Dropdown */}
           <div className="input-field">
             <label htmlFor="userRole">Select Role</label>
             <select id="userRole" value={userRole} onChange={(e) => setUserRole(e.target.value)}>
@@ -30,7 +50,6 @@ const UserLogin = () => {
             </select>
           </div>
 
-          {/* Email Input */}
           <div className="input-field">
             <label htmlFor="userEmail">Username or Email</label>
             <input
@@ -43,7 +62,6 @@ const UserLogin = () => {
             />
           </div>
 
-          {/* Password Input */}
           <div className="input-field">
             <label htmlFor="userPassword">Password</label>
             <input
@@ -56,7 +74,6 @@ const UserLogin = () => {
             />
           </div>
 
-          {/* Remember Me Checkbox */}
           <div className="auth-remember">
             <input
               type="checkbox"
@@ -67,10 +84,8 @@ const UserLogin = () => {
             <label htmlFor="rememberUser">Remember Me</label>
           </div>
 
-          {/* Login Button */}
           <button type="submit" className="auth-btn">Login</button>
 
-          {/* Forgot Password and Sign Up Links */}
           <div className="auth-links">
             <a href="#">Forgot Password?</a>
             <span>|</span>

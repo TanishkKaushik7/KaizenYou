@@ -1,20 +1,41 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "../src/components/nav";
 import Login from "../src/components/login";
-import Signup from "../src/components/Sign"; // Import Signup component
+import Signup from "../src/components/Sign";
 import LandingPage from "../src/components/landing";
+import StudentDashboard from "../src/components/dashboards/StudentDashboards";
+// import TeacherDashboard from "../src/components/TeacherDashboard";
+// import AdminDashboard from "../src/components/AdminDashboard";
+// import SchoolDashboard from "../src/components/SchoolDashboard";
 
 const App = () => {
   return (
     <Router basename="/KaizenYou">
-      <Navbar />
+      <AppContent />
+    </Router>
+  );
+};
+
+const AppContent = () => {
+  const location = useLocation();
+  
+  // Hide Navbar for dashboard pages
+  const hideNavbar = location.pathname.startsWith("/dashboard");
+
+  return (
+    <>
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} /> {/* Added Signup Route */}
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/dashboard/student" element={<StudentDashboard />} />
+        {/* <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
+        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard/school" element={<SchoolDashboard />} /> */}
       </Routes>
-    </Router>
+    </>
   );
 };
 
