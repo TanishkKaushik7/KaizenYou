@@ -11,17 +11,58 @@ const StudentDashboard = () => {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
   const [showMoreOptions, setShowMoreOptions] = useState(false);
+  const [visibleItems, setVisibleItems] = useState([]);
+  const [hiddenItems, setHiddenItems] = useState([]);
+  
   const [profile, setProfile] = useState({
     name: "John Doe",
     email: "john.doe@example.com",
     profilePic: null,
   });
 
+  const menuItems = [
+    { id: "profile", icon: <FaUserCircle />, title: "Profile" },
+    { id: "courses", icon: <FaBook />, title: "Access Courses" },
+    { id: "quizzes", icon: <FaQuestionCircle />, title: "Attempt Quizzes" },
+    { id: "submit", icon: <FaUpload />, title: "Submit Answers" },
+    { id: "ai-help", icon: <FaRobot />, title: "AI Help" },
+    { id: "evaluation", icon: <FaChartBar />, title: "Evaluation" }
+  ];
+
   const navigate = useNavigate();
 
   useEffect(() => {
     localStorage.setItem("activeTab", activeTab);
   }, [activeTab]);
+
+  useEffect(() => {
+    const adjustMenu = () => {
+      if (window.innerWidth <= 768) {
+        let availableSpace = window.innerHeight - 60;
+        let totalHeight = 0;
+        let tempVisible = [];
+        let tempHidden = [];
+
+        for (let item of menuItems) {
+          totalHeight += 50; // Approx height per item
+          if (totalHeight < availableSpace) {
+            tempVisible.push(item);
+          } else {
+            tempHidden.push(item);
+          }
+        }
+        setVisibleItems(tempVisible);
+        setHiddenItems(tempHidden);
+      } else {
+        setVisibleItems(menuItems);
+        setHiddenItems([]);
+      }
+    };
+
+    adjustMenu();
+    window.addEventListener("resize", adjustMenu);
+    return () => window.removeEventListener("resize", adjustMenu);
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem("activeTab");
@@ -35,10 +76,10 @@ const StudentDashboard = () => {
       <nav className={`dashboard-sidebar ${showMobileMenu ? "mobile-active" : ""}`}>
         <h2 className="dashboard-title">Student Dashboard</h2>
 
-        {/* Mobile Profile Toggle Button */}
-        <button className="profile-toggle-btn" onClick={() => setShowProfile(!showProfile)}>
+        {/* Mobile Profile Toggle */}
+        {/* <button className="profile-toggle-btn" onClick={() => setShowProfile(!showProfile)}>
           {showProfile ? <FaChevronUp /> : <FaChevronDown />} Your Profile
-        </button>
+        </button> */}
 
         {/* Profile Section */}
         <div className={`profile-section ${showProfile ? "show" : "hide"}`}>
@@ -53,37 +94,32 @@ const StudentDashboard = () => {
 
         {/* Sidebar Navigation */}
         <ul className="dashboard-menu">
-          <li className={activeTab === "profile" ? "active" : ""} onClick={() => setActiveTab("profile")}>
-            <FaUserCircle /> Profile
-          </li>
-          <li className={activeTab === "courses" ? "active" : ""} onClick={() => setActiveTab("courses")}>
-            <FaBook /> Access Courses
-          </li>
-          <li className={activeTab === "quizzes" ? "active" : ""} onClick={() => setActiveTab("quizzes")}>
-            <FaQuestionCircle /> Attempt Quizzes
-          </li>
-          <li className={activeTab === "submit" ? "active" : ""} onClick={() => setActiveTab("submit")}>
-            <FaUpload /> Submit Answers
-          </li>
-          <li className={activeTab === "ai-help" ? "active" : ""} onClick={() => setActiveTab("ai-help")}>
-            <FaRobot /> AI Help
-          </li>
+          {visibleItems.map((item) => (
+            <li key={item.id} className={activeTab === item.id ? "active" : ""} onClick={() => setActiveTab(item.id)}>
+              {item.icon} {item.title}
+            </li>
+          ))}
 
-          {/* More Options (Hidden items in dropdown on small screens) */}
-          <li className="more-options" onClick={() => setShowMoreOptions(!showMoreOptions)}>
-            <FaEllipsisH /> More
-          </li>
+          {/* More Options */}
+          {hiddenItems.length > 0 && (
+            <li className="more-options" onClick={() => setShowMoreOptions(!showMoreOptions)}>
+              <FaEllipsisH /> More
+            </li>
+          )}
 
+          {/* Hidden Menu Items inside More */}
           {showMoreOptions && (
             <div className="more-dropdown">
-              <li className={activeTab === "evaluation" ? "active" : ""} onClick={() => setActiveTab("evaluation")}>
-                <FaChartBar /> Evaluation
-              </li>
+              {hiddenItems.map((item) => (
+                <li key={item.id} className={activeTab === item.id ? "active" : ""} onClick={() => setActiveTab(item.id)}>
+                  {item.icon} {item.title}
+                </li>
+              ))}
             </div>
           )}
         </ul>
 
-        {/* Logout Button */}
+        {/* Logout */}
         <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt /> Logout
         </button>
@@ -107,7 +143,7 @@ const StudentDashboard = () => {
   );
 };
 
-/* Profile Editing Component */
+/* Profile Component */
 const Profile = ({ profile, setProfile }) => {
   const [updatedProfile, setUpdatedProfile] = useState(profile);
 
@@ -159,10 +195,10 @@ const Profile = ({ profile, setProfile }) => {
 };
 
 /* Other Sections */
-const Courses = () => <div className="content-section">📚 Here you can access your courses.</div>;
+const Courses = () => <div className="content-section">📚 Access your courses here.</div>;
 const Quizzes = () => <div className="content-section">❓ Attempt quizzes here.</div>;
 const SubmitAnswers = () => <div className="content-section">📤 Submit your answers here.</div>;
-const AIHelp = () => <div className="content-section">🤖 AI Help: Ask your questions here.</div>;
-const Evaluation = () => <div className="content-section">📊 View your evaluation and progress here.</div>;
+const AIHelp = () => <div className="content-section">🤖 AI Help: Ask your questions.</div>;
+const Evaluation = () => <div className="content-section">📊 View your evaluation and progress.</div>;
 
 export default StudentDashboard;

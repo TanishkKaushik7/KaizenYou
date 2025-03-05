@@ -1,0 +1,191 @@
+/* General Styling */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f4f4f9;
+}
+
+/* Sidebar Styling */
+.dashboard-sidebar {
+    width: 250px;
+    background-color: #2c3e50;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: width 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+}
+
+.dashboard-sidebar.collapsed {
+    width: 60px;
+    padding: 10px;
+}
+
+.dashboard-title {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    transition: opacity 0.3s;
+}
+
+.dashboard-sidebar.collapsed .dashboard-title {
+    opacity: 0;
+}
+
+/* Sidebar Menu */
+.dashboard-menu {
+    list-style: none;
+    padding: 0;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-menu li {
+    padding: 12px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    transition: background 0.3s, padding-left 0.3s;
+    white-space: nowrap;
+}
+
+.dashboard-sidebar.collapsed .dashboard-menu li {
+    padding-left: 10px;
+    justify-content: center;
+}
+
+.dashboard-menu li:hover,
+.dashboard-menu li.active {
+    background-color: #1abc9c;
+    border-radius: 5px;
+}
+
+.dashboard-menu li > svg {
+    font-size: 24px;
+}
+
+/* More Options */
+.more-options {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.more-dropdown {
+    background-color: #34495e;
+    border-radius: 5px;
+    margin-top: 5px;
+    padding: 10px;
+}
+
+.more-dropdown li {
+    padding: 10px;
+    transition: background 0.3s;
+}
+
+.more-dropdown li:hover {
+    background-color: #1abc9c;
+}
+
+/* Logout Button */
+.logout-container {
+    margin-top: auto;  /* Pushes the logout button below all options */
+    padding-top: 10px;
+}
+
+.logout-btn {
+    background-color: #e74c3c;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 5px;
+    transition: background 0.3s;
+    width: calc(100% - 40px);
+}
+
+.logout-btn:hover {
+    background-color: #c0392b;
+}
+
+/* Remove Profile Section */
+.profile-section {
+    display: none !important;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        height: 60px;
+        padding: 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+    }
+
+    .dashboard-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+    }
+
+    .dashboard-menu li {
+        justify-content: center;
+        font-size: 0;
+        padding: 10px;
+    }
+
+    .dashboard-menu li svg {
+        font-size: 24px;
+    }
+
+    .dashboard-title {
+        display: none;
+    }
+
+    /* Logout Button Fixed at Bottom Left */
+    .logout-btn {
+        position: fixed;
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        padding: 12px 18px;
+        font-size: 18px;
+        z-index: 1000;
+        background-color: #e74c3c;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .logout-btn:hover {
+        background-color: #c0392b;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        position: absolute;
+        top: 15px;
+        left: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
+}

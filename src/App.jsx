@@ -5,7 +5,7 @@ import Login from "../src/components/login";
 import Signup from "../src/components/Sign";
 import LandingPage from "../src/components/landing";
 import StudentDashboard from "../src/components/dashboards/StudentDashboards";
-// import TeacherDashboard from "../src/components/TeacherDashboard";
+import TeacherDashboard from "../src/components/dashboards/teacherdashboard";
 // import AdminDashboard from "../src/components/AdminDashboard";
 // import SchoolDashboard from "../src/components/SchoolDashboard";
 
@@ -31,8 +31,8 @@ const AppContent = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard/student" element={<StudentDashboard />} />
-        {/* <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
-        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
+        {/* <Route path="/dashboard/admin" element={<AdminDashboard />} />
         <Route path="/dashboard/school" element={<SchoolDashboard />} /> */}
       </Routes>
     </>
