@@ -100,11 +100,6 @@ const TeacherDashboard = () => {
           )}
         </ul>
 
-        {/* Profile Icon (Only in Responsive Mode) */}
-        <div className="profile-icon" onClick={() => setShowProfile(!showProfile)}>
-          <FaUserCircle size={30} />
-        </div>
-
         {/* Logout */}
         <button className="logout-btn" onClick={handleLogout}>
           <FaSignOutAlt /> Logout

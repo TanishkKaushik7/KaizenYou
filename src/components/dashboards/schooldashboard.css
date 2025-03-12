@@ -1,0 +1,172 @@
+/* ======= General Layout ======= */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background: #f4f4f4;
+    overflow-x: hidden;
+}
+
+/* ======= Sidebar Styles ======= */
+.dashboard-sidebar {
+    width: 260px;
+    min-width: 260px;
+    height: 100vh;
+    background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Sidebar Collapsed */
+.dashboard-sidebar.collapsed {
+    width: 80px;
+    min-width: 80px;
+    padding: 20px 10px;
+}
+
+.dashboard-sidebar.collapsed .label {
+    display: none;
+}
+
+/* ======= Sidebar Toggle Button ======= */
+.toggle-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    align-self: flex-end;
+}
+
+/* ======= Sidebar Navigation ======= */
+.dashboard-sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dashboard-sidebar li {
+    padding: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+    border-radius: 8px;
+    white-space: nowrap;
+}
+
+.dashboard-sidebar li .icon {
+    margin-right: 12px;
+    font-size: 20px;
+}
+
+.dashboard-sidebar li:hover,
+.dashboard-sidebar .active {
+    background: #4c40b5;
+    transform: scale(1.05);
+}
+
+/* ======= Logout Button ======= */
+.logout-btn {
+    background: #ff4757;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: auto;
+    border-radius: 6px;
+    transition: background 0.3s ease-in-out;
+    width: 100%;
+}
+
+.logout-btn:hover {
+    background: #e84118;
+}
+
+/* ======= Main Content ======= */
+.dashboard-content {
+    flex: 1;
+    padding: 20px;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+/* ======= Content Sections ======= */
+.content-section {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.12);
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+}
+
+/* ======= Responsive Design for Mobile (Top Navbar Sidebar) ======= */
+@media (max-width: 900px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .dashboard-sidebar {
+        width: 100%;
+        height: 60px;
+        min-width: 100%;
+        padding: 10px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        overflow: hidden;
+        transition: height 0.3s ease-in-out;
+    }
+
+    .dashboard-sidebar ul {
+        display: flex;
+        width: 100%;
+        justify-content: space-around;
+        padding: 0;
+        margin: 0;
+    }
+
+    .dashboard-sidebar li {
+        flex-grow: 1;
+        justify-content: center;
+        font-size: 0;
+        padding: 10px;
+    }
+
+    .dashboard-sidebar li .icon {
+        font-size: 24px;
+        margin: 0;
+    }
+
+    .logout-btn {
+        width: auto;
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .dashboard-content {
+        padding: 15px;
+        margin-top: 60px;
+    }
+}

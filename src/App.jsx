@@ -6,8 +6,8 @@ import Signup from "../src/components/Sign";
 import LandingPage from "../src/components/landing";
 import StudentDashboard from "../src/components/dashboards/StudentDashboards";
 import TeacherDashboard from "../src/components/dashboards/teacherdashboard";
-// import AdminDashboard from "../src/components/AdminDashboard";
-// import SchoolDashboard from "../src/components/SchoolDashboard";
+import AdminDashboard from "../src/components/dashboards/AdminDashboard";
+import SchoolDashboard from "../src/components/dashboards/SchoolDashboard";
 
 const App = () => {
   return (
@@ -32,8 +32,8 @@ const AppContent = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/dashboard/student" element={<StudentDashboard />} />
         <Route path="/dashboard/teacher" element={<TeacherDashboard />} />
-        {/* <Route path="/dashboard/admin" element={<AdminDashboard />} />
-        <Route path="/dashboard/school" element={<SchoolDashboard />} /> */}
+        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard/school" element={<SchoolDashboard />} />
       </Routes>
     </>
   );
