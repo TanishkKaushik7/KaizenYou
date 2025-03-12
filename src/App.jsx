@@ -19,13 +19,13 @@ const App = () => {
 
 const AppContent = () => {
   const location = useLocation();
-  
+
   // Hide Navbar for dashboard pages
   const hideNavbar = location.pathname.startsWith("/dashboard");
 
   return (
     <>
-      {!hideNavbar && <Navbar />}
+      {!hideNavbar && <Navbar />} {/* Navbar only visible outside dashboards */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />

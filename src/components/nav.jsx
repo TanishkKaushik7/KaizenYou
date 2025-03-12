@@ -1,22 +1,34 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate, useLocation } from "react-router-dom";
 import "../cssfiles/nav.css";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
-  const navigate = useNavigate(); // React Router navigation
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen((prev) => !prev);
   };
 
+  const handleNavigation = (path) => {
+    if (location.pathname === path) {
+      window.location.reload(); // Refresh if already on the same page
+    } else {
+      navigate(path);
+    }
+    setMenuOpen(false); // Close menu for better UX on mobile
+  };
+
   return (
     <nav>
       <div className="navbar">
-        <div className="logo">
-          <a href="#Home">KaizenYou</a>
+        {/* Logo - Navigates to LandingPage and refreshes if already there */}
+        <div className="logo" onClick={() => handleNavigation("/")}>
+          <span>KaizenYou</span>
         </div>
 
+        {/* Hamburger Menu (Mobile) */}
         <button
           className={`hamburger ${menuOpen ? "menu-toggle" : ""}`}
           onClick={toggleMenu}
@@ -27,23 +39,18 @@ const Navbar = () => {
           <span className="line"></span>
         </button>
 
+        {/* Menu Items */}
         <ul className={`menu ${menuOpen ? "active" : ""}`}>
-          {["Home", "About Us", "Events"].map((item) => (
-            <li key={item}>
-              <a
-                href={item === "About Us" ? "/about" : `#${item.replace(/\s+/g, "")}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item}
-              </a>
-            </li>
-          ))}
+          <li onClick={() => handleNavigation("/")}>Home</li>
+          <li onClick={() => handleNavigation("/about")}>About Us</li>
+          <li onClick={() => handleNavigation("/events")}>Events</li>
 
+          {/* Login Button */}
           <li>
-           
-          </li> <button className="login-btn" onClick={() => navigate("/login")}>
+            <button className="login-btn" onClick={() => handleNavigation("/login")}>
               Login
             </button>
+          </li>
         </ul>
       </div>
     </nav>

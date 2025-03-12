@@ -43,9 +43,10 @@ nav {
 }
 
 /* Logo */
-.logo a {
+.logo span {
   color: #fff;
   font-size: 27px;
+  cursor: pointer;
   font-weight: 600;
   text-decoration: none;
 }
@@ -54,11 +55,12 @@ nav {
 .menu {
   display: flex;
   list-style: none;
+  cursor: pointer;
   gap: 20px;
   align-items: center;
 }
 
-.menu li a {
+.menu li{
   text-decoration: none;
   color: #fff;
   font-size: 17px;
@@ -66,7 +68,7 @@ nav {
   transition: color 0.3s ease;
 }
 
-.menu li a:hover {
+.menu li:hover {
   color: #9b5de5;
 }
 
